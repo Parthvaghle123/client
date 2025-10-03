@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "./config/api";
 import "./css/Cart.css";
 import { Link } from "react-router-dom";
 
@@ -14,7 +15,7 @@ const Cart = () => {
   const fetchCart = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:3001/cart", {
+      const res = await axios.get(`${API_BASE_URL}/cart`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const cart = res.data.cart || [];
@@ -30,7 +31,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:3001/update-quantity/${productId}`,
+        `${API_BASE_URL}/update-quantity/${productId}`,
         { action },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -44,7 +45,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `http://localhost:3001/remove-from-cart/${productId}`,
+        `${API_BASE_URL}/remove-from-cart/${productId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

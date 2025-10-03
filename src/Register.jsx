@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "./config/api";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Signup.css";
 
@@ -44,7 +45,7 @@ const Register = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/register", {
+      .post(`${API_BASE_URL}/register`, {
         ...form,
         password: password,
       })

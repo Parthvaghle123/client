@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_BASE_URL from "./config/api";
 import "./css/Cart.css";
 
 const Check = () => {
@@ -26,7 +27,7 @@ const Check = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:3001/user/profile", {
+        const res = await axios.get(`${API_BASE_URL}/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFormData((prev) => ({
@@ -62,7 +63,7 @@ const Check = () => {
 
     const token = localStorage.getItem("token");
     try {
-      await axios.post("http://localhost:3001/order", formData, {
+      await axios.post(`${API_BASE_URL}/order`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/order-success");

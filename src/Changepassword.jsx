@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "./config/api";
 import "./css/Login.css";
 
 const ChangePassword = () => {
@@ -23,7 +24,7 @@ const ChangePassword = () => {
     setAlertMessage(""); // Clear old alerts
 
     try {
-      const res = await axios.post("http://localhost:3001/verify-email", {
+      const res = await axios.post(`${API_BASE_URL}/verify-email`, {
         email: email.toLowerCase(),
       });
 
@@ -66,7 +67,7 @@ const ChangePassword = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/change-password", {
+      const res = await axios.post(`${API_BASE_URL}/change-password`, {
         email: email.toLowerCase(),
         newPassword,
       });

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/Home.css"; // 🔹 popup CSS અહીં હશે
 import axios from "axios";
+import API_BASE_URL from "./config/api";
 
 // 🔹 Static Product List
 const products1 = [
@@ -47,7 +48,7 @@ const Item = () => {
 
     try {
       await axios.post(
-        "http://localhost:3001/add-to-cart",
+        `${API_BASE_URL}/add-to-cart`,
         {
           productId: product.id,
           image: product.image,

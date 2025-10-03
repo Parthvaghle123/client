@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import RedirectLoader from "./RedirectLoader";
+import API_BASE_URL from "./config/api";
 import "./css/Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -31,7 +32,7 @@ const Login = ({ setUsername }) => {
     setLoading(true);
 
     axios
-      .post("http://localhost:3001/login", {
+      .post(`${API_BASE_URL}/login`, {
         email: emailInput.toLowerCase(),
         password,
       })

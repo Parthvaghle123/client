@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import API_BASE_URL from "./config/api";
 import jsPDF from "jspdf";
 import "./css/Order.css";
 
@@ -19,7 +20,7 @@ const Orders = () => {
   const fetchOrders = () => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3001/orders", {
+      .get(`${API_BASE_URL}/orders`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setOrders(res.data.orders || res.data))
@@ -38,7 +39,7 @@ const Orders = () => {
 
     try {
       await axios.put(
-        `http://localhost:3001/api/cancel-order/${cancelOrderId}`,
+        `${API_BASE_URL}/api/cancel-order/${cancelOrderId}`,
         { reason: reasonToSend },
         { headers: { Authorization: `Bearer ${token}` } }
       );
