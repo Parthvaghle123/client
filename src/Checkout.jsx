@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./css/cart.css";
+import "./css/Cart.css";
 
 const Check = () => {
   const navigate = useNavigate();
