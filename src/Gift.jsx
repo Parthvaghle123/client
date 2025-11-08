@@ -106,7 +106,7 @@ const Item = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const token = localStorage.getItem("token");
-
+  const [error, setError] = useState(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
@@ -153,19 +153,61 @@ const Item = () => {
       setTimeout(() => setShowToast(false), 3000);
     } catch (error) {
       console.error(error);
-      alert("Error adding item");
+      setError("Error adding item to cart. Please try again.");
     }
   };
 
-  return (
-    <>
-      {showToast && <div className="toast-popup bg-success text-white">🛒 {toastMessage}</div>}
+ // 🔹 Loading Spinner
+  if (loading) {
+    return (
       <div className="Herosection_1">
         <div className="container">
-          {loading ? (
-            <div className="alert alert-info text-center">🔄 Searching...</div>
-          ) : filteredProducts.length === 0 ? (
-            <div className="alert alert-warning text-center">
+          <div
+            className="d-flex justify-content-center align-items-center"
+            style={{ height: "200px", width: "100%" }}
+          >
+            <div className="spinner-border text-success" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="Herosection_1">
+        <div className="container">
+          <div className="alert alert-danger text-center mt-4 fw-bold">
+            ❌ {error}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {/* 🔹 Toast Popup */}
+      {showToast && (
+        <div className="toast-popup bg-success text-white">
+          🛒 {toastMessage}
+        </div>
+      )}
+
+      <div className="Herosection_1">
+        <div className="container">
+          {filteredProducts.length === 0 ? (
+            <div
+              className="alert alert-danger text-center mt-3 fw-bold align-items-center"
+              style={{
+                width: "fit-content",
+                backgroundColor: "#e7414c",
+                color: "white",
+                margin: "20px auto",
+              }}
+            >
               ❌ No products found.
             </div>
           ) : (
