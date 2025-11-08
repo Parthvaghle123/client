@@ -17,10 +17,21 @@ const Navbar = ({ username, setUsername }) => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    setUsername("");
-    navigate("/home");
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        await fetch('https://server-0o7h.onrender.com/logout', {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      }
+    } finally {
+      localStorage.removeItem('token');
+      localStorage.removeItem('username');
+      setUsername('');
+      navigate('/home');
+    }
   };
 
   const hideNavbarPaths = ["/order-success"];
