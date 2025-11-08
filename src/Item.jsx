@@ -70,12 +70,11 @@ const Item = () => {
 
   return (
     <>
-      {/* 🔹 Popup Top Center */}
+       {/* ✅ Toast Popup */}
       {showToast && (
         <div className="toast-popup bg-success text-white">
           🛒 {toastMessage}
         </div>
-      )}
       )}
 
       <div className="container mt-4">
