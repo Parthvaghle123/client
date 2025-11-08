@@ -60,20 +60,28 @@ const Login = ({ setUsername }) => {
     <div className="body">
       <div className="container d-flex justify-content-center align-items-center vh-100">
         <div className="login-container">
-          <h2 className="text-primary text-center mb-3 head">Login</h2>
+          <h2 className="text-success text-center mb-3  h2 ">Login</h2>
           <hr />
           {errorMessage && (
             <div className="alert alert-danger">{errorMessage}</div>
           )}
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="off">
             <div className="mb-3">
               <label className="form-label">Email</label>
               <input
                 type="email"
+                name="email"
                 className="form-control"
                 placeholder="example@gmail.com"
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
+                autoComplete="off"
+                inputMode="email"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                data-form-type="other"
+                aria-autocomplete="none"
                 required
               />
             </div>
@@ -82,31 +90,42 @@ const Login = ({ setUsername }) => {
               <label className="form-label">Password</label>
               <input
                 type="password"
+                name="password"
                 className="form-control"
                 placeholder="*********"
                 value={password}
                 onChange={handlePasswordChange}
+                autoComplete="off"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck={false}
+                data-form-type="other"
+                aria-autocomplete="none"
                 required
               />
               <small className="text-muted strength">{strengthMessage}</small>
             </div>
-            {/* 🔹 Change Password Link */}
-            <p className="mt-1">
+
+            <p className="mt-1 fw-bold">
               <a
                 href="/changepassword"
-                className="text-decoration-none text-primary"
+                className="text-decoration-none text-success "
               >
                 Change Password
               </a>
             </p>
-            <button type="submit" className="btn btn-primary fw-bold w-100">
+
+            <button type="submit" className="btn7 fw-bold w-100 rounded">
               Login
             </button>
           </form>
 
           <p className="mt-3 text-center">
             Don't have an account?{" "}
-            <a href="/register" className="text-decoration-none fw-bold">
+            <a
+              href="/register"
+              className="text-decoration-none fw-bold text-success"
+            >
               Register
             </a>
           </p>

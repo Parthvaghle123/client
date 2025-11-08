@@ -66,7 +66,7 @@ const ChangePassword = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:3001/change-password", {
+      const res = await axios.post("https://server-0o7h.onrender.com/change-password", {
         email: email.toLowerCase(),
         newPassword,
       });
@@ -100,7 +100,9 @@ const ChangePassword = () => {
     <div className="body">
       <div className="container d-flex justify-content-center align-items-center vh-100">
         <div className="login-container">
-          <h2 className="text-primary text-center mb-3 head">Change Password</h2>
+          <h2 className="text-success text-center mb-3 h2">
+            Change Password
+          </h2>
           <hr />
 
           {/* ✅ Alert Message */}
@@ -114,17 +116,21 @@ const ChangePassword = () => {
           {!emailVerified && !showEmailLoader ? (
             <form onSubmit={handleEmailSubmit}>
               <div className="mb-3">
-                <label>Email</label>
+                <label className="l1">Email</label>
                 <input
                   type="email"
                   className="form-control mt-2"
                   placeholder="example@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="off"
+                  autoCapitalize="words"
+                  autoCorrect="off"
+                  spellCheck={false}
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+            <button type="submit" className="btn7 fw-bold w-100 rounded">
                 Verify Email
               </button>
             </form>
@@ -136,10 +142,10 @@ const ChangePassword = () => {
           ) : !showRedirectLoader ? (
             <form onSubmit={handlePasswordChange}>
               <div className="mb-2">
-                <label className="mb-2">New Password</label>
+                <label className="mb-2 l1">New Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control "
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="********"
@@ -147,17 +153,17 @@ const ChangePassword = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="mb-2">Confirm Password</label>
+                <label className="mb-2 l1">Confirm Password</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control "
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="********"
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-primary w-100">
+            <button type="submit" className="btn7 fw-bold w-100 rounded">
                 Change Password
               </button>
             </form>
