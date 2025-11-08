@@ -31,7 +31,7 @@ const Login = ({ setUsername }) => {
     setLoading(true);
 
     axios
-      .post("https://server-0o7h.onrender.com/login", {
+      .post("https://server-vjpl.onrender.com/login", {
         email: emailInput.toLowerCase(),
         password,
       })

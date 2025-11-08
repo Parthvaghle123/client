@@ -14,7 +14,7 @@ const Cart = () => {
   const fetchCart = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("https://server-0o7h.onrender.com/cart", {
+      const res = await axios.get("https://server-vjpl.onrender.com/cart", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const cart = res.data.cart || [];
@@ -30,7 +30,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `https://server-0o7h.onrender.com/update-quantity/${productId}`,
+        `https://server-vjpl.onrender.com/update-quantity/${productId}`,
         { action },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -44,7 +44,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.delete(
-        `https://server-0o7h.onrender.com/remove-from-cart/${productId}`,
+        `https://server-vjpl.onrender.com/remove-from-cart/${productId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

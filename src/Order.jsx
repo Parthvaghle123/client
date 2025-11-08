@@ -19,7 +19,7 @@ const Orders = () => {
   const fetchOrders = () => {
     const token = localStorage.getItem("token");
     axios
-      .get("https://server-0o7h.onrender.com/orders", {
+      .get("https://server-vjpl.onrender.com/orders", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setOrders(res.data.orders || res.data))
@@ -38,7 +38,7 @@ const Orders = () => {
 
     try {
       await axios.put(
-        `https://server-0o7h.onrender.com/api/cancel-order/${cancelOrderId}`,
+        `https://server-vjpl.onrender.com/api/cancel-order/${cancelOrderId}`,
         { reason: reasonToSend },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -127,7 +127,7 @@ const Register = () => {
     if (!validateForm()) return; // ❌ stop if validation fails
 
     axios
-      .post("https://server-0o7h.onrender.com/register", {
+      .post("https://server-vjpl.onrender.com/register", {
         ...form,
         password: password,
       })
