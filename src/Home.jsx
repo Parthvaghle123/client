@@ -80,7 +80,7 @@ const Home = () => {
             </h3>
 
             <a
-              href="https://server-0o7h.onrender.com/menu" // Replace with Link if using React Router
+              href="/menu" // Replace with Link if using React Router
               className="btn btn-outline-success btn-sm fw-bold"
             >
               <i className="fas fa-utensils me-1"></i> View Menu
