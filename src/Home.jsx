@@ -1,5 +1,5 @@
 import React from "react";
-import Images from "./images";
+import Images from "./Images";
 // import "./Home.css";
 import Item from "./Item";
 const Home = () => {
