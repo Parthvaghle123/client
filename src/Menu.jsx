@@ -161,7 +161,7 @@ const Item = () => {
 
   return (
     <>
-      {showToast && <div className="toast-popup">🛒 {toastMessage}</div>}
+      {showToast && <div className="toast-popup bg-success text-white">🛒 {toastMessage}</div>}
       <div className="Herosection_1">
         <div className="container">
           {loading ? (
