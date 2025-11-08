@@ -31,7 +31,7 @@ const Login = ({ setUsername }) => {
     setLoading(true);
 
     axios
-      .post("http://localhost:3001/login", {
+      .post("https://server-0o7h.onrender.com/login", {
         email: emailInput.toLowerCase(),
         password,
       })

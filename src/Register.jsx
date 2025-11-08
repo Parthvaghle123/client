@@ -44,7 +44,7 @@ const Register = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/register", {
+      .post("https://server-0o7h.onrender.com/register", {
         ...form,
         password: password,
       })

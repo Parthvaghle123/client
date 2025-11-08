@@ -26,7 +26,7 @@ const Check = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:3001/user/profile", {
+        const res = await axios.get("https://server-0o7h.onrender.com/user/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setFormData((prev) => ({
@@ -62,7 +62,7 @@ const Check = () => {
 
     const token = localStorage.getItem("token");
     try {
-      await axios.post("http://localhost:3001/order", formData, {
+      await axios.post("https://server-0o7h.onrender.com/order", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       navigate("/order-success");

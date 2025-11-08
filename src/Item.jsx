@@ -47,7 +47,7 @@ const Item = () => {
 
     try {
       await axios.post(
-        "http://localhost:3001/add-to-cart",
+        "https://server-0o7h.onrender.com/add-to-cart",
         {
           productId: product.id,
           image: product.image,
