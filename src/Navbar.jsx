@@ -30,9 +30,8 @@ const Navbar = ({ username, setUsername }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-whitesmoke sticky-top">
       <div className="container">
-        <Link className="navbar-brand d-flex" to="/">
-          <img src="https://www.starbucks.in/assets/icon/logo.png" alt="" width="50" height="50" />
-          <h3 className="fs-4 ms-1">Starbucks</h3>
+        <Link className="navbar-brand d-flex " to="/">
+          <h3 className="fs-2 fst-italic text-center">Starbucks</h3>
         </Link>
 
         <button
@@ -45,46 +44,26 @@ const Navbar = ({ username, setUsername }) => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto ms-3 gap-5 nav-links">
+          <ul className="navbar-nav me-auto ms-3 gap-5 nav-links ">
             <li className="nav-item">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `nav-link underline-animate ${isActive ? 'active' : ''}`
-                }
-              >
+              <Link className="nav-link underline-animate" to="/">
                 Home
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                to="/gift"
-                className={({ isActive }) =>
-                  `nav-link underline-animate ${isActive ? 'active' : ''}`
-                }
-              >
+              <Link className="nav-link underline-animate" to="/gift">
                 Gift
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                to="/menu"
-                className={({ isActive }) =>
-                  `nav-link underline-animate ${isActive ? 'active' : ''}`
-                }
-              >
+              <Link className="nav-link underline-animate" to="/menu">
                 Menu
-              </NavLink>
+              </Link>
             </li>
             <li className="nav-item">
-              <NavLink
-                to="/orders"
-                className={({ isActive }) =>
-                  `nav-link underline-animate ${isActive ? 'active' : ''}`
-                }
-              >
+              <Link className="nav-link underline-animate" to="/orders">
                 Order
-              </NavLink>
+              </Link>
             </li>
           </ul>
 
@@ -98,10 +77,6 @@ const Navbar = ({ username, setUsername }) => {
               placeholder="Search"
               id="search"
               value={searchText}
-              autoComplete="off"
-              autoCapitalize="words"
-              autoCorrect="off"
-              spellCheck={false}
               onChange={(e) => {
                 const value = e.target.value;
                 setSearchText(value);
@@ -117,13 +92,13 @@ const Navbar = ({ username, setUsername }) => {
           </form>
 
           <div className="d-flex align-items-center">
-            <Link to="/cart" className="btn2 btn btn-success me-3 mb-2">
+            <Link to="/cart" className="btn2 btn btn-success me-3 mb-2 ">
               🛒 <strong>MyCart</strong>
             </Link>
 
             <div className="dropdown nav-item text-center mb-2">
               <a
-                className="text-decoration-none dropdown-toggle fw-bold text-dark"
+                className="nav-link dropdown-toggle fw-bold text-dark"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
