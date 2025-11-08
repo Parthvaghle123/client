@@ -106,7 +106,7 @@ const Item = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const token = localStorage.getItem("token");
-
+  const [error] = useState(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
@@ -157,38 +157,84 @@ const Item = () => {
     }
   };
 
+  // 🌀 Loading Spinner
+  if (loading && products.length === 0) {
+    return (
+      <div className="Herosection_1">
+        <div className="container text-center py-5">
+          <div
+            className="spinner-border text-success"
+            style={{ width: "3rem", height: "3rem" }}
+            role="status"
+          >
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ❌ Error Display
+  if (error) {
+    return (
+      <div className="Herosection_1">
+        <div className="container">
+          <div className="alert alert-danger text-center">❌ {error}</div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      {showToast && <div className="toast-popup">🛒 {toastMessage}</div>}
+      {/* ✅ Toast Popup */}
+      {showToast && (
+        <div className="toast-popup bg-success text-white">
+          🛒 {toastMessage}
+        </div>
+      )}
+
+      {/* ✅ Product Section */}
       <div className="Herosection_1">
         <div className="container">
           {loading ? (
-            <div className="alert alert-info text-center">🔄 Searching...</div>
+            <div className="d-flex justify-content-center align-items-center my-4">
+              <div className="spinner-border text-success" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
           ) : filteredProducts.length === 0 ? (
-            <div className="alert alert-warning text-center">
+            <div
+              className="alert alert-danger text-center mt-3 fw-bold align-items-center"
+              style={{
+                width: "18%",
+                backgroundColor: "#e7414c",
+                margin: "20px auto",
+              }}
+            >
               ❌ No products found.
             </div>
           ) : (
-            <div id="products2">
+            <div id="products3" className="d-flex flex-wrap justify-content-center gap-4">
               {filteredProducts.map((item) => (
-                <div key={item.id} className="box1">
+                <div key={item.id} className="box2 shadow-sm">
                   <div className="img-box1">
                     <img
                       className="images1"
                       src={item.image}
                       alt={item.title}
+                      loading="lazy"
                     />
                   </div>
-                  <div className="bottom">
-                    <h2>{item.title}</h2>
-                    <h4>{item.per}</h4>
-                    <h3>₹{item.price}.00</h3>
-
+                  <div className="bottom text-center">
+                    <h5 className="fw-bold">{item.title}</h5>
+                    <p className="small text-muted">{item.per}</p>
+                    <h4 className="text-success fw-bold">₹{item.price}.00</h4>
                     <button
-                      className="btn4 btn btn-success"
+                      className="btn4 mt-2"
                       onClick={() => addToCart(item)}
                     >
-                      Add Item
+                      Add to Cart
                     </button>
                   </div>
                 </div>
@@ -198,11 +244,10 @@ const Item = () => {
         </div>
       </div>
 
-      {/* Enhanced Modern Footer */}
-      <footer className="bg-dark text-white pt-5 pb-3 fw-medium shadow-l mt-3">
+      {/* ✅ Footer */}
+      <footer className="bg-dark text-white pt-5 pb-3 fw-medium shadow-lg mt-3">
         <div className="container">
           <div className="row justify-content-start">
-            {/* Contact Info Left Aligned */}
             <div className="col-md-5 mb-4 text-md-start text-center">
               <h5 className="text-uppercase fw-bold text-warning mb-3 border-bottom border-warning pb-2">
                 Contact
@@ -213,19 +258,18 @@ const Item = () => {
               </p>
               <p className="mb-2">
                 <i className="far fa-envelope me-2 text-warning"></i>
-                vaghlaparth2005@gmail.com
+                vaghelaparth2005@gmail.com
               </p>
               <p>
-                <i className="fas fa-phone me-2 text-warning"></i>
-                +91 8735035021
+                <i className="fas fa-phone me-2 text-warning"></i> +91 8735035021
               </p>
             </div>
           </div>
 
-          <hr className=" border-secondary" />
+          <hr className="border-secondary" />
 
           <div className="row align-items-center justify-content-between">
-            <div className="col-md-6 text-md-start text-center  mb-md-0">
+            <div className="col-md-6 text-md-start text-center mb-md-0">
               <p className="mb-0">
                 Owned by:{" "}
                 <strong className="text-warning text-decoration-none">
@@ -234,7 +278,6 @@ const Item = () => {
               </p>
             </div>
 
-            {/* Social Icons Modernized */}
             <div className="col-md-6 text-md-end text-center">
               <ul className="list-inline mb-0">
                 {[

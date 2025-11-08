@@ -72,9 +72,10 @@ const Item = () => {
     <>
       {/* 🔹 Popup Top Center */}
       {showToast && (
-        <div className="toast-popup">
+        <div className="toast-popup bg-success text-white">
           🛒 {toastMessage}
         </div>
+      )}
       )}
 
       <div className="container mt-4">
