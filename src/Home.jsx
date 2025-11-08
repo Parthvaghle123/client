@@ -1,5 +1,7 @@
 import React from "react";
 import Images from "./Images";
+import { Link } from "react-router-dom";
+
 // import "./Home.css";
 import Item from "./Item";
 const Home = () => {
@@ -78,13 +80,12 @@ const Home = () => {
             <h3 className="text-success head fst-italic mb-0">
               Barista Recommends
             </h3>
-
-            <a
-              href="/menu" // Replace with Link if using React Router
-              className="btn btn-outline-success btn-sm fw-bold"
-            >
-              <i className="fas fa-utensils me-1"></i> View Menu
-            </a>
+   <Link
+        to="/menu"
+        className="btn btn-outline-success btn-sm fw-bold"
+      >
+        <i className="fas fa-utensils me-1"></i> View Menu
+      </Link>
           </div>
           <Item />
         </div>
